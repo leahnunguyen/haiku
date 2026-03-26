@@ -2,35 +2,64 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>Haiku</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>[for you] — Sonia Sanchez</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="./assets/css/styles.css">
 </head>
 <body>
-	<div class="grid-container">
-		<div>A</div>
-		<div>Radiant</div>
-		<div>young</div>
-		<div>woman</div>
-		<div>to</div>
-		<div>light</div>
-		<div>the</div>
-		<div>darkest</div>
-		<div>corners</div>
-		<div>of</div>
-		<div>winter</div>
-		<div>of</div>
-		<div>the</div>
-		<div>new</div>
-		<div>day</div>
-		<div>that</div>
-		<div>awaits</div>
-		<div>her</div>
-		<div>in</div>
-		<div>the</div>
-		<div>morning</div>
-	</div>
+	<!-- Background: add image under assets/img/ and enable rules on .river-stage in styles.css -->
+	<main class="river-stage" aria-label="Haiku: for you by Sonia Sanchez">
+		<p class="visually-hidden">Sonia Sanchez, for you. love between us is speech and breath. loving you is a long river running.</p>
 
-	<script src="./assets/js/scripts.js"></script>
-	
+		<div class="word-node" style="--t: 6vh; --l: 8%;" data-parallax="0.08" data-breath-delay="0s">
+			<span class="word">love</span>
+		</div>
+		<div class="word-node" style="--t: 14vh; --l: 52%;" data-parallax="0.14" data-breath-delay="0.35s">
+			<span class="word">between</span>
+		</div>
+		<div class="word-node" style="--t: 22vh; --l: 78%;" data-parallax="0.11" data-breath-delay="0.7s">
+			<span class="word">us</span>
+		</div>
+		<div class="word-node" style="--t: 30vh; --l: 32%;" data-parallax="0.18" data-breath-delay="1.05s">
+			<span class="word">is</span>
+		</div>
+
+		<div class="word-node" style="--t: 48vh; --l: 12%;" data-parallax="0.12" data-breath-delay="0.2s">
+			<span class="word">speech</span>
+		</div>
+		<div class="word-node" style="--t: 56vh; --l: 44%;" data-parallax="0.2" data-breath-delay="0.55s">
+			<span class="word">and</span>
+		</div>
+		<div class="word-node" style="--t: 64vh; --l: 72%;" data-parallax="0.09" data-breath-delay="0.9s">
+			<span class="word">breath.</span>
+		</div>
+		<div class="word-node" style="--t: 74vh; --l: 22%;" data-parallax="0.16" data-breath-delay="1.25s">
+			<span class="word">loving</span>
+		</div>
+		<div class="word-node" style="--t: 82vh; --l: 58%;" data-parallax="0.13" data-breath-delay="0.45s">
+			<span class="word">you</span>
+		</div>
+		<div class="word-node" style="--t: 90vh; --l: 88%;" data-parallax="0.17" data-breath-delay="0.8s">
+			<span class="word">is</span>
+		</div>
+
+		<div class="word-node word-node--river" style="--t: 118vh; --l: 6%;" data-parallax="0.22" data-breath-delay="0.15s">
+			<span class="word">a</span>
+		</div>
+		<div class="word-node word-node--river" style="--t: 132vh; --l: 36%;" data-parallax="0.19" data-breath-delay="0.5s">
+			<span class="word">long</span>
+		</div>
+		<div class="word-node word-node--river" style="--t: 148vh; --l: 68%;" data-parallax="0.25" data-breath-delay="0.85s">
+			<span class="word">river</span>
+		</div>
+		<div class="word-node word-node--river word-node--finale" style="--t: 168vh; --l: 42%;" data-parallax="0.28" data-breath-delay="1.1s">
+			<span class="word">running.</span>
+		</div>
+	</main>
+
+	<script src="./assets/js/main.js"></script>
 </body>
 </html>

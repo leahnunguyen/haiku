@@ -1,5 +1,171 @@
-/* styles.css */
+/* [for you] — deep indigo river scroll. No flex/grid on word layout. */
 
-* {
-	font-family: Arial;
+:root {
+	--indigo-deep: #0c0618;
+	--indigo-mid: #1a0f2e;
+	--indigo-veil: #241538;
+	--mist: #e6e2f0;
+	--mist-dim: rgba(230, 226, 240, 0.55);
+	--glow: rgba(180, 200, 255, 0.45);
+	--ripple: rgba(120, 170, 255, 0.35);
+	--parallax-y: 0px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	min-height: 100%;
+	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+	background: var(--indigo-deep);
+	color: var(--mist);
+	overflow-x: hidden;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.river-stage {
+	position: relative;
+	min-height: 240vh;
+	padding-bottom: 28vh;
+	background-color: var(--indigo-deep);
+	background-image:
+		radial-gradient(ellipse 120% 80% at 50% -20%, var(--indigo-veil) 0%, transparent 55%),
+		radial-gradient(ellipse 90% 50% at 85% 40%, rgba(45, 30, 80, 0.5) 0%, transparent 45%),
+		radial-gradient(ellipse 70% 60% at 10% 70%, rgba(30, 20, 55, 0.6) 0%, transparent 50%),
+		linear-gradient(180deg, var(--indigo-mid) 0%, var(--indigo-deep) 45%, #080410 100%);
+	/* Optional: uncomment when image is in assets/img/
+	background-image: url("../img/your-background.jpg");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	*/
+}
+
+.word-node {
+	position: absolute;
+	top: var(--t);
+	left: var(--l);
+	transform: translate3d(-50%, var(--parallax-y, 0px), 0);
+	will-change: transform;
+	pointer-events: none;
+}
+
+.word-node .word {
+	pointer-events: auto;
+	position: relative;
+	display: inline-block;
+	font-size: clamp(1.35rem, 3.2vw, 2.35rem);
+	font-weight: 500;
+	letter-spacing: 0.02em;
+	line-height: 1.2;
+	text-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+	animation: breath 5.5s ease-in-out infinite;
+	animation-delay: var(--breath-delay, 0s);
+	cursor: default;
+}
+
+.word-node--river .word {
+	font-size: clamp(1.55rem, 3.8vw, 2.75rem);
+	font-weight: 600;
+	color: #f0ecff;
+}
+
+.word-node--finale .word {
+	font-size: clamp(1.85rem, 4.5vw, 3.2rem);
+	font-weight: 600;
+	letter-spacing: 0.04em;
+}
+
+@keyframes breath {
+	0%,
+	100% {
+		opacity: 0.88;
+		transform: scale(1);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.045);
+	}
+}
+
+.word {
+	transition: filter 0.35s ease, text-shadow 0.35s ease;
+}
+
+.word:hover {
+	filter: drop-shadow(0 0 12px var(--glow)) drop-shadow(0 0 28px var(--ripple));
+	text-shadow:
+		0 0 20px rgba(200, 210, 255, 0.5),
+		0 0 40px rgba(140, 160, 255, 0.25);
+}
+
+.word::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 0.35em;
+	height: 0.35em;
+	margin: -0.175em 0 0 -0.175em;
+	border-radius: 50%;
+	background: radial-gradient(circle, var(--ripple) 0%, transparent 70%);
+	opacity: 0;
+	pointer-events: none;
+	z-index: -1;
+}
+
+.word:hover::after {
+	animation: water-ripple 1.1s ease-out forwards;
+}
+
+@keyframes water-ripple {
+	0% {
+		transform: scale(0.2);
+		opacity: 0.65;
+	}
+	70% {
+		opacity: 0.2;
+	}
+	100% {
+		transform: scale(14);
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	.word-node {
+		transform: translate3d(-50%, 0, 0);
+	}
+
+	.word {
+		animation: none;
+		opacity: 0.95;
+	}
+
+	.word:hover::after {
+		animation: none;
+	}
 }
