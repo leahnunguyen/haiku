@@ -119,6 +119,11 @@ body {
 /* Specific emphasis words */
 .word-node .word.word--strong {
 	font-weight: 700;
+	font-size: 1.1em;
+	/* Extra contrast so the emphasis is obvious */
+	text-shadow:
+		0 0 26px rgba(22, 10, 39, 0.25),
+		0 0 40px rgba(70, 40, 140, 0.18);
 }
 
 @keyframes breath {
