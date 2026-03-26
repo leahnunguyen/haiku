@@ -118,12 +118,27 @@ body {
 
 /* Specific emphasis words */
 .word-node .word.word--strong {
-	font-weight: 700;
-	font-size: 1.35em;
+	font-weight: 700 !important;
+	/* Use an absolute responsive size (rem/vw) instead of em for consistency */
+	font-size: clamp(1.7rem, 4.1vw, 3.0rem) !important;
 	/* Extra contrast so the emphasis is obvious */
 	text-shadow:
 		0 0 26px rgba(22, 10, 39, 0.25),
 		0 0 40px rgba(70, 40, 140, 0.18);
+	/* Override the normal breath animation so emphasis visibly "breathes bigger" */
+	animation: breath-strong 5.5s ease-in-out infinite !important;
+}
+
+@keyframes breath-strong {
+	0%,
+	100% {
+		opacity: 0.9;
+		transform: scale(1.02);
+	}
+	50% {
+		opacity: 1;
+		transform: scale(1.085);
+	}
 }
 
 @keyframes breath {
