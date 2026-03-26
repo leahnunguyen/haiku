@@ -31,7 +31,7 @@ html {
 body {
 	margin: 0;
 	min-height: 100%;
-	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
+	font-family: "DynaPuff", system-ui;
 	background: #ffe7f3;
 	color: var(--ink);
 	overflow-x: hidden;
@@ -89,8 +89,12 @@ body {
 	pointer-events: auto;
 	position: relative;
 	display: inline-block;
+	font-family: "DynaPuff", system-ui;
+	font-optical-sizing: auto;
 	font-size: clamp(1.35rem, 3.2vw, 2.35rem);
-	font-weight: 500;
+	font-weight: 400;
+	font-variation-settings:
+		"wdth" 100;
 	letter-spacing: 0.02em;
 	line-height: 1.2;
 	text-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
@@ -110,6 +114,11 @@ body {
 	font-weight: 600;
 	letter-spacing: 0.04em;
 	color: var(--ink);
+}
+
+/* Specific emphasis words */
+.word-node .word.word--strong {
+	font-weight: 700;
 }
 
 @keyframes breath {
