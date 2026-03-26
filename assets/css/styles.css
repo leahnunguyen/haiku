@@ -119,7 +119,7 @@ body {
 /* Specific emphasis words */
 .word-node .word.word--strong {
 	font-weight: 700;
-	font-size: 1.1em;
+	font-size: 1.35em;
 	/* Extra contrast so the emphasis is obvious */
 	text-shadow:
 		0 0 26px rgba(22, 10, 39, 0.25),
