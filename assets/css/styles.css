@@ -11,8 +11,11 @@
 	--parallax-y: 0px;
 
 	/* Pastel pink tint for the intro atmosphere */
-	--pastel-pink: rgba(255, 199, 223, 0.75);
-	--pastel-pink-soft: rgba(255, 199, 223, 0.35);
+	--pastel-pink: rgba(255, 214, 232, 0.78);
+	--pastel-pink-soft: rgba(255, 214, 232, 0.32);
+
+	/* Dark ink for readability once the background is pastel */
+	--ink: #160a27;
 }
 
 *,
@@ -29,8 +32,8 @@ body {
 	margin: 0;
 	min-height: 100%;
 	font-family: "EB Garamond", Garamond, "Times New Roman", serif;
-	background: var(--indigo-deep);
-	color: var(--mist);
+	background: #ffe7f3;
+	color: var(--ink);
 	overflow-x: hidden;
 }
 
@@ -50,13 +53,8 @@ body {
 	position: relative;
 	min-height: 240vh;
 	padding-bottom: 28vh;
-	background-color: var(--indigo-deep);
-	background-image:
-		radial-gradient(ellipse 120% 80% at 50% -20%, var(--indigo-veil) 0%, transparent 55%),
-		radial-gradient(ellipse 90% 50% at 85% 40%, rgba(45, 30, 80, 0.5) 0%, transparent 45%),
-		radial-gradient(ellipse 70% 60% at 10% 70%, rgba(30, 20, 55, 0.6) 0%, transparent 50%),
-		linear-gradient(180deg, rgba(26, 15, 46, 0.92) 0%, rgba(12, 6, 24, 0.95) 45%, rgba(8, 4, 16, 0.98) 100%),
-		url("../img/Cherry Blossom Night GIF.gif");
+	background-color: #ffe7f3;
+	background-image: url("../img/Cherry Blossom Night GIF.gif");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
@@ -95,7 +93,7 @@ body {
 	font-weight: 500;
 	letter-spacing: 0.02em;
 	line-height: 1.2;
-	text-shadow: 0 0 24px rgba(0, 0, 0, 0.35);
+	text-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
 	animation: breath 5.5s ease-in-out infinite;
 	animation-delay: var(--breath-delay, 0s);
 	cursor: default;
@@ -104,13 +102,14 @@ body {
 .word-node--river .word {
 	font-size: clamp(1.55rem, 3.8vw, 2.75rem);
 	font-weight: 600;
-	color: #f0ecff;
+	color: var(--ink);
 }
 
 .word-node--finale .word {
 	font-size: clamp(1.85rem, 4.5vw, 3.2rem);
 	font-weight: 600;
 	letter-spacing: 0.04em;
+	color: var(--ink);
 }
 
 @keyframes breath {
