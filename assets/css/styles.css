@@ -51,13 +51,11 @@ body {
 		radial-gradient(ellipse 120% 80% at 50% -20%, var(--indigo-veil) 0%, transparent 55%),
 		radial-gradient(ellipse 90% 50% at 85% 40%, rgba(45, 30, 80, 0.5) 0%, transparent 45%),
 		radial-gradient(ellipse 70% 60% at 10% 70%, rgba(30, 20, 55, 0.6) 0%, transparent 50%),
-		linear-gradient(180deg, var(--indigo-mid) 0%, var(--indigo-deep) 45%, #080410 100%);
-	/* Optional: uncomment when image is in assets/img/
-	background-image: url("../img/your-background.jpg");
+		linear-gradient(180deg, rgba(26, 15, 46, 0.92) 0%, rgba(12, 6, 24, 0.95) 45%, rgba(8, 4, 16, 0.98) 100%),
+		url("../img/Cherry Blossom Night GIF.gif");
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	*/
 }
 
 .word-node {
