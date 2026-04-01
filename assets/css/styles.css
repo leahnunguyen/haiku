@@ -35,6 +35,9 @@ body {
 	background: #ffe7f3;
 	color: var(--ink);
 	overflow-x: hidden;
+	/* Tutorial: smooth rotation when JS changes transform */
+	transition-property: transform;
+	transition-duration: 3s;
 }
 
 .visually-hidden {
@@ -111,4 +114,19 @@ body {
 	font-weight: 600;
 	letter-spacing: 0.04em;
 	color: var(--ink);
+}
+
+/* Tutorial: continuous CSS animation example */
+@keyframes animFrames {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.cssAnim {
+	animation-name: animFrames;
+	animation-duration: 2s;
 }
