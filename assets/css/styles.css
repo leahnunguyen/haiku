@@ -112,24 +112,3 @@ body {
 	letter-spacing: 0.04em;
 	color: var(--ink);
 }
-
-/* Specific emphasis words */
-.word-node .word.word--strong {
-	font-weight: 700 !important;
-	/* Use an absolute responsive size (rem/vw) instead of em for consistency */
-	font-size: clamp(1.7rem, 4.1vw, 3.0rem) !important;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
-
-	.word-node {
-		transform: translate3d(-50%, 0, 0);
-	}
-
-	.word {
-		opacity: 0.95;
-	}
-}
