@@ -58,6 +58,11 @@ body {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
+	/* Smooth transform changes triggered from Javascript */
+	transform-origin: center center;
+	transition-property: transform;
+	transition-duration: 2.5s;
+	transition-timing-function: ease-in-out;
 }
 
 .river-stage::before {
