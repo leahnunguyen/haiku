@@ -79,8 +79,7 @@ body {
 	position: absolute;
 	top: var(--t);
 	left: var(--l);
-	transform: translate3d(-50%, var(--parallax-y, 0px), 0);
-	will-change: transform;
+	transform: translate3d(-50%, 0, 0);
 	pointer-events: none;
 	z-index: 1;
 }
@@ -98,8 +97,6 @@ body {
 	letter-spacing: 0.02em;
 	line-height: 1.2;
 	text-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
-	animation: breath 5.5s ease-in-out infinite;
-	animation-delay: var(--breath-delay, 0s);
 	cursor: default;
 }
 
@@ -121,80 +118,6 @@ body {
 	font-weight: 700 !important;
 	/* Use an absolute responsive size (rem/vw) instead of em for consistency */
 	font-size: clamp(1.7rem, 4.1vw, 3.0rem) !important;
-	/* Extra contrast so the emphasis is obvious */
-	text-shadow:
-		0 0 26px rgba(22, 10, 39, 0.25),
-		0 0 40px rgba(70, 40, 140, 0.18);
-	/* Override the normal breath animation so emphasis visibly "breathes bigger" */
-	animation: breath-strong 5.5s ease-in-out infinite !important;
-}
-
-@keyframes breath-strong {
-	0%,
-	100% {
-		opacity: 0.9;
-		transform: scale(1.02);
-	}
-	50% {
-		opacity: 1;
-		transform: scale(1.085);
-	}
-}
-
-@keyframes breath {
-	0%,
-	100% {
-		opacity: 0.88;
-		transform: scale(1);
-	}
-	50% {
-		opacity: 1;
-		transform: scale(1.045);
-	}
-}
-
-.word {
-	transition: filter 0.35s ease, text-shadow 0.35s ease;
-}
-
-.word:hover {
-	filter: drop-shadow(0 0 12px var(--glow)) drop-shadow(0 0 28px var(--ripple));
-	text-shadow:
-		0 0 20px rgba(200, 210, 255, 0.5),
-		0 0 40px rgba(140, 160, 255, 0.25);
-}
-
-.word::after {
-	content: "";
-	position: absolute;
-	left: 50%;
-	top: 50%;
-	width: 0.35em;
-	height: 0.35em;
-	margin: -0.175em 0 0 -0.175em;
-	border-radius: 50%;
-	background: radial-gradient(circle, var(--ripple) 0%, transparent 70%);
-	opacity: 0;
-	pointer-events: none;
-	z-index: -1;
-}
-
-.word:hover::after {
-	animation: water-ripple 1.1s ease-out forwards;
-}
-
-@keyframes water-ripple {
-	0% {
-		transform: scale(0.2);
-		opacity: 0.65;
-	}
-	70% {
-		opacity: 0.2;
-	}
-	100% {
-		transform: scale(14);
-		opacity: 0;
-	}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -207,11 +130,6 @@ body {
 	}
 
 	.word {
-		animation: none;
 		opacity: 0.95;
-	}
-
-	.word:hover::after {
-		animation: none;
 	}
 }
