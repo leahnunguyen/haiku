@@ -83,6 +83,9 @@ body {
 	top: var(--t);
 	left: var(--l);
 	transform: translate3d(-50%, 0, 0);
+	/* Smooth movement when JS updates transforms on the word nodes */
+	transition-property: transform;
+	transition-duration: 6s;
 	pointer-events: none;
 	z-index: 1;
 }
@@ -128,5 +131,5 @@ body {
 
 .cssAnim {
 	animation-name: animFrames;
-	animation-duration: 2s;
+	animation-duration: 5s;
 }
