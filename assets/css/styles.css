@@ -35,9 +35,32 @@ body {
 	background: #ffe7f3;
 	color: var(--ink);
 	overflow-x: hidden;
-	/* Tutorial: smooth rotation when JS changes transform */
-	transition-property: transform;
-	transition-duration: 3s;
+}
+
+/* Fixed background layer: GIF stays put while poem scrolls */
+.stage-fixed-bg {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	background-color: #ffe7f3;
+	background-image: url("../img/Cherry Blossom Night GIF.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	pointer-events: none;
+}
+
+.stage-fixed-bg::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(
+		180deg,
+		var(--pastel-pink) 0%,
+		var(--pastel-pink-soft) 28%,
+		rgba(255, 199, 223, 0) 65%
+	);
+	pointer-events: none;
 }
 
 .visually-hidden {
@@ -54,28 +77,22 @@ body {
 
 .river-stage {
 	position: relative;
+	z-index: 1;
 	min-height: 240vh;
 	padding-bottom: 28vh;
-	background-color: #ffe7f3;
-	background-image: url("../img/Cherry Blossom Night GIF.gif");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
+	background: transparent;
 }
 
-.river-stage::before {
-	content: "";
-	position: absolute;
-	inset: 0;
-	/* Pastel intro tint that fades down the "river" */
-	background: linear-gradient(
-		180deg,
-		var(--pastel-pink) 0%,
-		var(--pastel-pink-soft) 28%,
-		rgba(255, 199, 223, 0) 65%
-	);
-	pointer-events: none;
-	z-index: 0;
+/* Positioning context for absolutely placed words; not a typographic grid */
+.grid-container.word-layer {
+	position: relative;
+	min-height: inherit;
+	display: block;
+}
+
+.word-node.last {
+	padding-bottom: 0.35rem;
+	border-bottom: 2px solid rgba(220, 200, 180, 0.85);
 }
 
 .word-node {
