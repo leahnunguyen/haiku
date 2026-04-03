@@ -1,4 +1,4 @@
-/* [for you] — deep indigo river scroll. No flex/grid on word layout. */
+/* [for you] — off-grid haiku; fixed GIF behind scrollable text layer */
 
 :root {
 	--indigo-deep: #0c0618;
@@ -37,32 +37,6 @@ body {
 	overflow-x: hidden;
 }
 
-/* Fixed background layer: GIF stays put while poem scrolls */
-.stage-fixed-bg {
-	position: fixed;
-	inset: 0;
-	z-index: 0;
-	background-color: #ffe7f3;
-	background-image: url("../img/Cherry Blossom Night GIF.gif");
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-	pointer-events: none;
-}
-
-.stage-fixed-bg::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(
-		180deg,
-		var(--pastel-pink) 0%,
-		var(--pastel-pink-soft) 28%,
-		rgba(255, 199, 223, 0) 65%
-	);
-	pointer-events: none;
-}
-
 .visually-hidden {
 	position: absolute;
 	width: 1px;
@@ -75,24 +49,55 @@ body {
 	border: 0;
 }
 
+/* Fixed behind everything — does not rotate with .word-layer */
+.stage-fixed-bg {
+	position: fixed;
+	inset: 0;
+	z-index: 0;
+	background-color: #ffe7f3;
+	background-image: url("../img/Cherry Blossom Night GIF.gif");
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	pointer-events: none;
+}
+
 .river-stage {
 	position: relative;
 	z-index: 1;
 	min-height: 240vh;
 	padding-bottom: 28vh;
-	background: transparent;
 }
 
-/* Positioning context for absolutely placed words; not a typographic grid */
-.grid-container.word-layer {
+.river-stage::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	/* Pastel intro tint that fades down the "river" */
+	background: linear-gradient(
+		180deg,
+		var(--pastel-pink) 0%,
+		var(--pastel-pink-soft) 28%,
+		rgba(255, 199, 223, 0) 65%
+	);
+	pointer-events: none;
+	z-index: 0;
+}
+
+/* Text layer only — whole-layer spin on click (pairs with randomize() in main.js) */
+.word-layer.grid-container {
 	position: relative;
-	min-height: inherit;
+	z-index: 1;
+	min-height: 240vh;
 	display: block;
+	transition-property: transform;
+	transition-duration: 3s;
+	transform-origin: 50% 30%;
 }
 
 .word-node.last {
-	padding-bottom: 0.35rem;
-	border-bottom: 2px solid rgba(220, 200, 180, 0.85);
+	padding-bottom: 2rem;
+	border-bottom: 2px solid rgb(220, 200, 180);
 }
 
 .word-node {
@@ -100,9 +105,6 @@ body {
 	top: var(--t);
 	left: var(--l);
 	transform: translate3d(-50%, 0, 0);
-	/* Smooth movement when JS updates transforms on the word nodes */
-	transition-property: transform;
-	transition-duration: 6s;
 	pointer-events: none;
 	z-index: 1;
 }
@@ -121,6 +123,11 @@ body {
 	line-height: 1.2;
 	text-shadow: 0 0 18px rgba(0, 0, 0, 0.15);
 	cursor: default;
+}
+
+.word-node .word.word--strong {
+	font-weight: 700;
+	font-size: clamp(1.7rem, 4.1vw, 3rem);
 }
 
 .word-node--river .word {
