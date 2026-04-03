@@ -104,7 +104,8 @@ body {
 	position: absolute;
 	top: var(--t);
 	left: var(--l);
-	transform: translate3d(-50%, 0, 0);
+	/* Idle float + click kick driven from main.js via --dx / --dy */
+	transform: translate3d(calc(-50% + var(--dx, 0px)), var(--dy, 0px), 0);
 	pointer-events: none;
 	z-index: 1;
 }
